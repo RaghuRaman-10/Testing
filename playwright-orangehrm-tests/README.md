@@ -2,6 +2,11 @@
 
 Automated test suite for OrangeHRM using Playwright.
 
+## About
+Playwright + TypeScript automation framework built independently to transition 
+from a manual testing background into QA Automation. Covers Login, Dashboard, 
+PIM, and Admin modules using Page Object Model (POM) structure.
+
 ## Prerequisites
 
 - Node.js (v14 or higher)
