@@ -42,4 +42,23 @@ test.describe('OrangeHRM Dashboard Tests', () => {
     await dashboardPage.pimMenu.click();
     await expect(page).toHaveURL(/pim/);
   });
+
+  test('TC-009: should display key dashboard widgets', async ({ page }) => {
+    const dashboardPage = new DashboardPage(page);
+    await expect(dashboardPage.dashboardHeader).toBeVisible({ timeout: 10000 });
+    await expect(dashboardPage.timeAtWorkWidget).toBeVisible({ timeout: 10000 });
+    await expect(dashboardPage.myActionsWidget).toBeVisible({ timeout: 10000 });
+  });
+
+  test('TC-010: should show expected number of main menu items', async ({ page }) => {
+    const dashboardPage = new DashboardPage(page);
+    const menuItemCount = await dashboardPage.getMenuItemCount();
+    await expect(menuItemCount).toBeGreaterThanOrEqual(8);
+  });
+
+  test('TC-011: should logout from dashboard successfully', async ({ page }) => {
+    const dashboardPage = new DashboardPage(page);
+    await dashboardPage.logout();
+    await expect(page).toHaveURL(/auth\/login/);
+  });
 });

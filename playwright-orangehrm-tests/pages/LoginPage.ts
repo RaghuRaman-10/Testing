@@ -16,7 +16,10 @@ export class LoginPage {
     }
 
     async goto() {
-        await this.page.goto('/web/index.php/auth/login');
+        await this.page.goto('/web/index.php/auth/login', {
+            waitUntil: 'networkidle',
+            timeout: 60000,
+        });
     }
 
     async login(username : string, password : string) {
